@@ -27,7 +27,7 @@ app.use(cors({ credentials: true, origin: allowedOrigins }));
 
 const allowedOrigins = [
     "http://localhost:5173",              // For local development
-    process.env.FRONTEND_URL    // Replace with your actual Vercel frontend URL
+    "https://authapp-frontend-navy.vercel.app/"    // Replace with your actual Vercel frontend URL
   ];
   
   app.use(cors({
