@@ -1,20 +1,33 @@
-{
+ 
+
+  {
     "version": 2,
-   "builds": [
-      {
-        "src": "index.html",
-        "use": "@vercel/static",
-        "config":{
-            "includeFiles" : [
-                "dist/**"
-            ]
+    "builds": [
+        {
+          "src": "index.html",
+          "use": "@vercel/static",
+          "config":{
+              "includeFiles" : [
+                  "dist/**"
+              ]
+          }
         }
-      }
-    ],
+      ],
     "routes": [
       {
         "src": "/(.*)",
         "dest": "/index.html"
+      }
+    ],
+    "headers": [
+      {
+        "source": "/(.*)",
+        "headers": [
+          {
+            "key": "Content-Security-Policy",
+            "value": "script-src 'self' 'unsafe-eval' https://cdn.jsdelivr.net"
+          }
+        ]
       }
     ]
   }
