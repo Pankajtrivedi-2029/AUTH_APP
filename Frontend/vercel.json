@@ -1,0 +1,21 @@
+{
+    "version": 2,
+   "builds": [
+      {
+        "src": "index.html",
+        "use": "@vercel/react",
+        "config":{
+            "includeFiles" : [
+                "dist/**"
+            ]
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/index.html"
+      }
+    ]
+  }
+  
