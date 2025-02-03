@@ -3,7 +3,7 @@
    "builds": [
       {
         "src": "index.html",
-        "use": "@vercel/react",
+        "use": "@vercel/static",
         "config":{
             "includeFiles" : [
                 "dist/**"
