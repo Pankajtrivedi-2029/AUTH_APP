@@ -25,7 +25,7 @@ const allowedOrigins = ["https://authapp-frontend-navy.vercel.app"];
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ credentials: true, origin: allowedOrigins }));
+app.use(cors({ origin: allowedOrigins }));
 
  
 
