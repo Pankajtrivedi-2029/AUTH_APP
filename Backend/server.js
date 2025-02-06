@@ -37,16 +37,16 @@ app.use(cors({ credentials: true, origin: allowedOrigins }));
 //     "https://your-frontend.vercel.app"    // Replace with your actual Vercel frontend URL
 //   ];
   
-  app.use(cors({
-    credentials: true,
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    }
-  }));
+  // app.use(cors({
+  //   credentials: true,
+  //   origin: (origin, callback) => {
+  //     if (!origin || allowedOrigins.includes(origin)) {
+  //       callback(null, true);
+  //     } else {
+  //       callback(new Error("Not allowed by CORS"));
+  //     }
+  //   }
+  // }));
 
 
 
