@@ -17,10 +17,9 @@ const port = process.env.PORT || 4000;
 // Connect to the database
 connectDB();
 
-// const allowedOrigins = ['http://localhost:5173'] // add your frontend url here
+const allowedOrigins = ['http://localhost:5173'] // add your frontend url here
 
-
-const allowedOrigins = ["https://authapp-frontend-navy.vercel.app"];
+ 
 
 // Middleware
 app.use(express.json());
@@ -37,16 +36,16 @@ app.use(cors({ credentials: true, origin: allowedOrigins }));
 //     "https://your-frontend.vercel.app"    // Replace with your actual Vercel frontend URL
 //   ];
   
-  app.use(cors({
-    credentials: true,
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    }
-  }));
+  // app.use(cors({
+  //   credentials: true,
+  //   origin: (origin, callback) => {
+  //     if (!origin || allowedOrigins.includes(origin)) {
+  //       callback(null, true);
+  //     } else {
+  //       callback(new Error("Not allowed by CORS"));
+  //     }
+  //   }
+  // }));
 
 
 
