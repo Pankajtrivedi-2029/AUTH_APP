@@ -17,14 +17,20 @@ const port = process.env.PORT || 4000;
 // Connect to the database
 connectDB();
 
-const allowedOrigins = ['http://localhost:5173'] // add your frontend url here
+// const allowedOrigins = ['http://localhost:5173'] // add your frontend url here
 
  
 
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://auth-app-sigma-three.vercel.app", // Your frontend URL
+    credentials: true,
+  })
+);
+
 
  
 
@@ -55,7 +61,7 @@ app.use(cors());
 
 // API routes
 app.get('/', (req, res) => {
-    return res.send('API is working');
+    return res.send('API is still working');
 });
 app.use('/api/auth',authRouter);
 app.use('/api/user',userRouter);
