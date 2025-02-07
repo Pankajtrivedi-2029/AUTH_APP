@@ -15,42 +15,81 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // const onSubmitHandler = async (e) => {
+  //   try {
+  //     e.preventDefault();
+  //     axios.defaults.withCredentials = true;
+  //     if (state === "Sign Up") {
+  //       const { data } = await axios.post(backendUrl + "/api/auth/register", {
+  //         name,
+  //         email,
+  //         password,
+  //       });
+
+  //       if (data.success) {
+  //         setIsLoggedin(true);
+  //         getUserData();
+  //         navigate("/");
+  //       } else {
+  //         toast.error(data.message);
+  //       }
+  //     } else {
+  //       const { data } = await axios.post(backendUrl + "/api/auth/login", {
+  //         email,
+  //         password,
+  //       });
+
+  //       if (data.success) {
+  //         setIsLoggedin(true);
+  //         getUserData();
+  //         navigate("/");
+  //       } else {
+  //         toast.error(data.message);
+  //       }
+  //     }
+  //   } catch (error) {
+  //     toast.error(error.message);
+  //   }
+  // };
+
   const onSubmitHandler = async (e) => {
-    try {
-      e.preventDefault();
-      axios.defaults.withCredentials = true;
-      if (state === "Sign Up") {
-        const { data } = await axios.post(backendUrl + "/api/auth/register", {
-          name,
-          email,
-          password,
-        });
+  try {
+    e.preventDefault();
 
-        if (data.success) {
-          setIsLoggedin(true);
-          getUserData();
-          navigate("/");
-        } else {
-          toast.error(data.message);
-        }
+    if (state === "Sign Up") {
+      const { data } = await axios.post(
+        backendUrl + "/api/auth/register",
+        { name, email, password },
+        { withCredentials: true } // Ensure cookies are sent
+      );
+
+      if (data.success) {
+        setIsLoggedin(true);
+        getUserData();
+        navigate("/");
       } else {
-        const { data } = await axios.post(backendUrl + "/api/auth/login", {
-          email,
-          password,
-        });
-
-        if (data.success) {
-          setIsLoggedin(true);
-          getUserData();
-          navigate("/");
-        } else {
-          toast.error(data.message);
-        }
+        toast.error(data.message);
       }
-    } catch (error) {
-      toast.error(error.message);
+    } else {
+      const { data } = await axios.post(
+        backendUrl + "/api/auth/login",
+        { email, password },
+        { withCredentials: true } // Ensure cookies are sent
+      );
+
+      if (data.success) {
+        setIsLoggedin(true);
+        getUserData();
+        navigate("/");
+      } else {
+        toast.error(data.message);
+      }
     }
-  };
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
+
 
   return (
     <div className="flex items-center justify-center min-h-screen px-6 sm:px-0 bg-gradient-to-br from-blue-200 to-purple-400">
